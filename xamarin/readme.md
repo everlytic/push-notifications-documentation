@@ -2,6 +2,7 @@
 - [Everlytic Push List Setup](../list_setup.html)
 - [Change Log](https://everlytic.github.io/push-notifications-sdk-xamarin/changelog.html)
 - [Test Scripts](./test_script.html)
+- [Sample App](https://github.com/everlytic/push-notifications-xamarin-sample-app)
 
 You can find the source code [here](https://github.com/everlytic/push-notifications-sdk-xamarin).
 
