@@ -1,7 +1,4 @@
----
----
-
-{:toc}
+# Everlytic Push Android SDK
 
 [![Download](https://api.bintray.com/packages/everlytic/maven/push-notifications/images/download.svg) ](https://bintray.com/everlytic/maven/push-notifications/_latestVersion)
 
