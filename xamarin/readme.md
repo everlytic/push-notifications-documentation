@@ -1,7 +1,13 @@
 - [SDK Reference](./quick_reference.html)
 - [Everlytic Push List Setup](../list_setup.html)
-- [Change Log](./changelog.html)
+- [Change Log](https://everlytic.github.io/push-notifications-sdk-xamarin/changelog.html)
 - [Test Scripts](./test_script.html)
+
+You can find the source code [here](https://github.com/everlytic/push-notifications-sdk-xamarin).
+
+## Prerequisites
+- A Firebase Project set up for your app. See the official Firebase docs [here](https://firebase.google.com/docs).
+- **Note:** Make sure that the FCM API is enabled on your Firebase Account.
 
 ## Notes
 
@@ -124,4 +130,4 @@ public void GetNotificationHistory()
 ### Basic Customization
 
 - Change the default icon by adding a `ic_ev_notification_small` drawable
-- Change the default color by updating the `styles.xml` `colorPrimary` property 
+- Change the default color by updating the `styles.xml` `colorPrimary` property  

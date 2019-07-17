@@ -1,5 +1,7 @@
 # Everlytic Push Web SDK
-This is the Web version of Everlytic's Push Notification SDK. It enables your website to serve Everlytic's Push Notifications to your user base. 
+This is the Web version of Everlytic's Push Notification SDK. It enables your website to serve Everlytic's Push Notifications to your user base.
+
+You can find the source code [here](https://github.com/everlytic/push-notifications-sdk-web) 
 
 ## Getting Started
 These instructions will get you up and running and receiving Push Notifications on your website in no time.

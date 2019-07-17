@@ -3,6 +3,14 @@
 
 {:toc}
 
+[![Download](https://api.bintray.com/packages/everlytic/maven/push-notifications/images/download.svg) ](https://bintray.com/everlytic/maven/push-notifications/_latestVersion)
+
+You can find the source code [here](https://github.com/everlytic/push-notifications-sdk-android)
+
+## Prerequisites
+- A Firebase Project set up for your app. See the official Firebase docs [here](https://firebase.google.com/docs/android/setup).
+- **Note:** Make sure that the FCM API is enabled on your Firebase Account.
+
 ## Getting Started
 
 ### Add the Everlytic Push Notification SDK 
