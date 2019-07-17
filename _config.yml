@@ -11,4 +11,4 @@ include:
     - readme.md
     - quick_reference.md
     - test_script.md
-theme: jekyll-theme-slate
+theme: jekyll-theme-cayman
