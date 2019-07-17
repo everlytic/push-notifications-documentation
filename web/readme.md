@@ -101,6 +101,3 @@ There are three main methods that you can call on the Everlytic SDK. They all re
 
 ## Sample App
 You can find look at our [Sample App](https://github.com/everlytic/push-notifications-web-sample-app) that implements the SDK and the above methods. Just be sure to replace the hash with the one you get from Everlytic.
-
-## License
-This project is licensed under the Mozilla Public License Version 2.0 - see the [LICENSE](LICENSE) file for details
