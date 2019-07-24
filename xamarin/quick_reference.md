@@ -5,7 +5,6 @@ All methods are accessible on the `EverlyticPush.EverlyticPush.Current` object. 
 All methods are available on the `Everlytic.Instance` static class
 
 ```c#
-void Initialize();
 void Initialize(string configurationString);
 ```
 Initializes the SDK in the application. Must be called before any other SDK Methods are called.
@@ -38,20 +37,18 @@ Returns `true` if the SDK has been initialized.
 void GetNotificationHistory(OnNotificationHistoryResultsDelegate onNotificationHistoryResultsDelegate);
 ```
 Asynchronously retrieves the notification history for the device and returns the results to an `OnNotificationHistoryResults` delegate
-
-## Android Set Up
-
-Add the following to your `AndroidManifest.xml` file inside the `<application>` tag. replacing `{config}` field with the SDK Configuration string.
-
-```xml
-<application>
-  <meta-data android:name="com.everlytic.api.SDK_CONFIGURATION" android:value="{config}"></meta-data>
-</application>
+****
+```c#
+int GetNotificationHistoryCount();
 ```
+Efficiently returns the number of messages stored in the notification history.
 
-Alternatively, pass your SDK Configuration string in as a parameter to the `Everlytic.Instance.Initialize` method.
+## Customization
+### Android - Default Notification Icon
 
-Change the default icon by adding a new drawable called `ic_ev_notification_small`
+Change the default icon by adding a new drawable called `ic_ev_notification_small` to your application
+
+### Android - Default Notification Color (where supported)
 Notification color is derived from the `styles.xml` `colorPrimary` value
 
 ## Known Issues
