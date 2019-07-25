@@ -1,9 +1,9 @@
 # Everlytic Push Xamarin SDK
 
-- [SDK Reference](./quick_reference.html)
-- [Everlytic Push List Setup](../list_setup.html)
+- [SDK Reference](quick_reference.md)
+- [Everlytic Push List Setup](../list_setup.md)
 - [Change Log](https://everlytic.github.io/push-notifications-sdk-xamarin/changelog.html)
-- [Test Scripts](./test_script.html)
+- [Test Scripts](test_script.md)
 - [Sample App](https://github.com/everlytic/push-notifications-xamarin-sample-app)
 
 You can find the source code [here](https://github.com/everlytic/push-notifications-sdk-xamarin).
@@ -14,22 +14,13 @@ You can find the source code [here](https://github.com/everlytic/push-notificati
 
 ## Notes
 
-- iOS is currently not implemented. Called methods will throw `NotImplementedException` when run on an iOS device.
+- iOS is currently not implemented. Called methods will print to the console when run on an iOS device.
 - A Test mode is provided during the alpha phase. This mocks HTTP requests to the Everlytic API for basic testing.
 
 ## Getting Started
 
-- Add the following to your `AndroidManifest.xml` file, replacing `{config}` field with the SDK Configuration string.
-    ```xml
-    <application>
-      <meta-data android:name="com.everlytic.api.SDK_CONFIGURATION" android:value="{config}"></meta-data>
-    </application>
-    ```
-
-    - Alternatively, you can pass the configuration string as a parameter to the SDK initialization method (see below).
-
-    _Your SDK Configuration string can obtained from your Push Projects page in Everlytic_
 - [Add your Firebase `google-services.json` file in your project](https://firebase.google.com/docs/android/setup?authuser=0#add-config-file). You may need to add the `Xamarin.GooglePlayServices.Base` NuGet package to fully configure your `google-services.json` file.
+- Initialize the EverlyticPush sdk in your top level application method. See examples below
 
 ## Initialize the SDK in your top level Application class
 
@@ -49,8 +40,8 @@ public class App : Application
         
         // Initialize the Everlytic with a configuration string
         Everlytic.Instance
-            .SetTestMode(true) // optional. Default is false
-            .Initialize("cD0zNTNmMDg5OS0yY2JiLTQyZTUtYTUyMi04YjgxNzY4ZGQ4NGE7aT1odHRwOi8vbXkudXJsLmNvbQ==");
+            //.SetTestMode(true) // optional. Default is false
+            .Initialize("<your configuration string>");
     }
 }
 
@@ -75,11 +66,8 @@ public class App : Application
             
         // Initialize the Everlytic SDK with a configuration string
         Everlytic.Instance
-            .SetTestMode(true) // optional. Default is false
-            .Initialize("cD0zNTNmMDg5OS0yY2JiLTQyZTUtYTUyMi04YjgxNzY4ZGQ4NGE7aT1odHRwOi8vbXkudXJsLmNvbQ==");
-            
-        // Initialize the Everlytic SDK using AndroidManifest.xml configuration string
-        Everlytic.Instance.Initialize();
+            //.SetTestMode(true) // optional. Default is false
+            .Initialize("<your configuration string>");
     }
 }
 ```
@@ -87,30 +75,37 @@ public class App : Application
 ## Using the SDK
 ### Subscribing a Contact
 
+If you don't require a success or fail result:
 ```c#
 public void SubscribeContact(string email) 
 {
-    // If you don't require a success or fail result
     Everlytic.Instance.Subscribe(email);
-    
-    // If you want to get the success or failure result of the subscription call
+}
+```
+If you want to get the success or failure result of the subscription call:
+```c#
+public void SubscribeContact(string email) 
+{
     Everlytic.Instance.Subscribe(email, result => 
     {
         // Handle the result. Note this does not return on the main thread
     });
 }
 ```
-
+    
 ### Unsubscribing a Contact
 
+If you don't require a success or fail result:
 ```c#
 public void UnsubscribeContact() 
 {
-    // If you don't require a success or fail result. 
-    // Unsubscribes the current contact
     Everlytic.Instance.Unsubscribe();
-    
-    // If you want to get the success or failure result of the subscription call
+}
+```
+If you want to get the success or failure result of the subscription call:
+```c#
+public void UnsubscribeContact() 
+{
     Everlytic.Instance.Unsubscribe(result => 
     {
         // Handle the result. Note this does not return on the main thread
