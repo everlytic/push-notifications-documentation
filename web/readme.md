@@ -3,6 +3,18 @@ This is the Web version of Everlytic's Push Notification SDK. It enables your we
 
 You can find the source code [here](https://github.com/everlytic/push-notifications-sdk-web) 
 
+## Browser Support
+Almost all modern browsers are supported on most platforms, with the exception of Apple. See the following table for Push Notification Support:
+
+| Browser     | Windows PC | macOS | Android | iOS (iPhone) |
+|:------------|:-----------|:------|:--------|:-------------|
+| **Chrome**  | Yes        | Yes   | Yes     | No           |
+| **Firefox** | Yes        | Yes   | Yes     | No           |
+| **Edge**    | Yes        | Yes   | Yes     | *N/A*        |
+| **Opera**   | Yes        | Yes   | Yes     | No           |
+| **Yandex**  | Yes        | Yes   | Yes     | *N/A*        |
+| **Safari**  | No         | No    | *N/A*   | No           |
+
 ## Getting Started
 These instructions will get you up and running and receiving Push Notifications on your website in no time.
 
