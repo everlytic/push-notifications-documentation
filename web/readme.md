@@ -113,3 +113,11 @@ There are three main methods that you can call on the Everlytic SDK. They all re
 
 ## Sample App
 You can find look at our [Sample App](https://github.com/everlytic/push-notifications-web-sample-app) that implements the SDK and the above methods. Just be sure to replace the hash with the one you get from Everlytic.
+
+## Error Codes
+At some point you might get an error response with certain codes. Here are some common codes and what they mean:
+
+| Code     | Description |
+|:------------|:-----------|
+| 403, 404, 410 | Invalid Token |
+| 400 | Unknown Error |
