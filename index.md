@@ -1,7 +1,12 @@
 # Everlytic Push Notification Documentation
 
-Everlytic Provides the ability to send out Push Notifications to mobile devices as well as your website (device agnostic)
+Everlytic Provides the ability to send out Push Notifications to mobile devices as well as your website (device agnostic).  
 
+There are three main types of Push Notifications, namely:
+1. **Bulk Push Notifications** - Send out a notification to a group of people which is useful for marketing and broadcasts.
+1. **Transactional Push Notifications** - Send out an individual notification to a specific person. For example: "Your invoice is due". [See Documentation](./transactional.md)
+1. **Push Notifications in a Workflow** - Similar to Transactional Push, but it can be part of a workflow with other types of messages.
+ 
 ## General Setup
 The basic overview of how you will set up Push Notifications is the following:
 1. Set up a specific push notifications list in Everlytic
@@ -15,4 +20,5 @@ The basic overview of how you will set up Push Notifications is the following:
 - [Web Push Documentation](./web/readme.html)
 
 ## FAQ
-- [How do I send out single Push Notifications to individual people via the API (Transactional)](./FAQ/workflows/readme.md)
+- [How do I add contacts to a Workflow that has Push Notifications?](./FAQ/workflows/readme.md)
+- [How do I send a Transactional Push Notification?](./transactional.md)

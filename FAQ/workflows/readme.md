@@ -1,5 +1,5 @@
-# How to set up transactional Push Notifications
-Transactional Push Notifications allow you to send individual Push Messages out to people instead of sending out a bulk message to a group of people. For example: Sending a push notification to someone to notify them that their invoice is due.
+# How to set up a Push Notification in a Workflow
+Workflows allow you to map a contact Journey, including multiple messages and decision points. You can include Push Notifications in Workflows too.
 
 **Note: We suggest you are comfortable with sending a bulk Push Notification before this process, because it requires that the SDK is set up correctly.**
 
