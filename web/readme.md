@@ -48,8 +48,9 @@ To ensure that you have added the file correctly, you should be able to go to th
 The options object that you need to provide to the `init` has the following fields:
 
 - `hash` You will get this hash from Everlytic _(See next section)_.
-- `autoSubscribe` Set this option if you would like your website to automatically subscribe people to Push Notifications (You won't need to call the SDK's `subscribe` method manually). _Note that this will pop up a modal asking the contact to enter their email address or to subscribe anonymously._   
-- `debug` Set this option if you would like to see debug console output and disable the pre-flight check caching. 
+- `autoSubscribe` Set this option if you would like your website to automatically subscribe people to Push Notifications (You won't need to call the SDK's `subscribe` method manually). _Note that this will pop up a modal asking the contact to enter their email address or to subscribe anonymously._
+- `installImmediately` Set this to true if you would like the SDK to be available immediately after initializing it. **If this is set to true, the page will reload the first time a contact lands on the page.** Without this setting, the contact will only be able to be subscribed once the contact has either reloaded the page, or navigated to another part of the website.
+- `debug` Set this option if you would like to see debug console output and disable the pre-flight check caching.  
 
 ## Getting a hash from Everlytic
 Everlytic needs to be set up to have a special list to send Push Notifications to. We recommend using a newly created list for this, but you can also use one of the lists you have already set up.
@@ -119,3 +120,6 @@ At some point you might get an error response with certain codes. Here are some 
 |:--------------|:--------------|
 | 403, 404, 410 | Invalid Token |
 | 400           | Unknown Error |
+
+## Known / Unknown issues
+- When the service worker first gets registered, it requires the page to either reload, or a navigation to another section of the website before it will be ready to subscribe. 
