@@ -27,7 +27,8 @@ These instructions will get you up and running and receiving Push Notifications 
 ```javascript
 importScripts('https://d1vjq17neg4i9o.cloudfront.net/everlytic-push-sw-0.0.1.min.js');
 ``` 
-To ensure that you have added the file correctly, you should be able to go to that file via the URL, e.g: ``https://yoursite.com/load-worker.js``
+**It is very important that this file lives in the root of your website and not in a sub folder.**
+To ensure that you have added the file correctly, you should be able to go to that file via the URL, e.g: ``https://yoursite.com/load-worker.js``. 
 
 **Step 2:** Next, you will need to add the following code to the `<head>` of your website.
 ```html
@@ -47,7 +48,7 @@ To ensure that you have added the file correctly, you should be able to go to th
 The options object that you need to provide to the `init` has the following fields:
 
 - `hash` You will get this hash from Everlytic _(See next section)_.
-- `autoSubscribe` Set this option if you would like your website to automatically subscribe people to Push Notifications (You won't need to call the SDK's `subscribe` method manually). _Note that this will only work for Anonymous Subscribes._   
+- `autoSubscribe` Set this option if you would like your website to automatically subscribe people to Push Notifications (You won't need to call the SDK's `subscribe` method manually). _Note that this will pop up a modal asking the contact to enter their email address or to subscribe anonymously._   
 - `debug` Set this option if you would like to see debug console output and disable the pre-flight check caching. 
 
 ## Getting a hash from Everlytic
@@ -73,9 +74,9 @@ There are three main methods that you can call on the Everlytic SDK. They all re
     ``` 
     Typically the email address you supply would come from the logged in user to your website. If you don't have access to the user's email address, we suggest you use the `subscribeAnonymous` or `subscribeWithAskEmailPrompt` methods instead _(See below)_.
     
-    -
     
-- `subscribeWithAskEmailPrompt()` This method is very similar to the first `subscribe` method, but instead of you passing a contact object with the email address, a prompt will ask the contact to enter their email address to subscribe with. Useful if you don't have access to the contact's email details, but don't want to send anonymously.
+    
+- `subscribeWithAskEmailPrompt()` This method is very similar to the first `subscribe` method, but instead of you passing a contact object with the email address, a prompt will ask the contact to enter their email address to subscribe with. Useful if you don't have access to the contact's email details, but don't want to send anonymously. The contact will still be given the option to subscribe anonymously. This method gets called automatically if you added the `autoSubscribe` option in the SDK `init` method.
     ```javascript
     //... This code comes after the SDK init method that did not supply the autoSubscribe option
     SDK.subscribeWithAskEmailPrompt().then(function(result) {
@@ -85,9 +86,8 @@ There are three main methods that you can call on the Everlytic SDK. They all re
     });
     ```
 
-    -
-        
-- `subscribeAnonymous()` This method you can either call manually, or it will get called automatically if you added the `autoSubscribe` option in the SDK `init` method.
+    
+- `subscribeAnonymous()` You can call this method if you don't have access to the contact's email address and you also don't want to prompt the contact to enter their email address. It will subscribe all devices under the anonymous contact in everlytic.
     ```javascript
     //... This code comes after the SDK init method that did not supply the autoSubscribe option
     SDK.subscribeAnonymous().then(function(result) {
@@ -97,7 +97,6 @@ There are three main methods that you can call on the Everlytic SDK. They all re
     });
     ```
     
-    -
      
 - `unsubscribe()` This method should be called when the user no longer wants to receive Push Notifications. We recommend that you add a button somewhere on your website that allows the user to do so. 
     ```javascript
@@ -109,7 +108,6 @@ There are three main methods that you can call on the Everlytic SDK. They all re
     });
     ``` 
     
-    -
 
 ## Sample App
 You can find look at our [Sample App](https://github.com/everlytic/push-notifications-web-sample-app) that implements the SDK and the above methods. Just be sure to replace the hash with the one you get from Everlytic.
@@ -117,7 +115,7 @@ You can find look at our [Sample App](https://github.com/everlytic/push-notifica
 ## Error Codes
 At some point you might get an error response with certain codes. Here are some common codes and what they mean:
 
-| Code     | Description |
-|:------------|:-----------|
+| Code          | Description   |
+|:--------------|:--------------|
 | 403, 404, 410 | Invalid Token |
-| 400 | Unknown Error |
+| 400           | Unknown Error |
