@@ -86,6 +86,14 @@ There are three main methods that you can call on the Everlytic SDK. They all re
         console.error('Something bad happened');      
     });
     ```
+    
+    - This method takes an optional `options` object, and you can provide a force flag to ignore that the contact has already subscribed, and ask them permission again. For Example:
+    
+     ```javascript
+    //... This code comes after the SDK init method that did not supply the autoSubscribe option
+    SDK.subscribeWithAskEmailPrompt({force:true}) 
+    //... Rest of the code
+    ```
 
     
 - `subscribeAnonymous()` You can call this method if you don't have access to the contact's email address and you also don't want to prompt the contact to enter their email address. It will subscribe all devices under the anonymous contact in everlytic.
@@ -120,6 +128,3 @@ At some point you might get an error response with certain codes. Here are some 
 |:--------------|:--------------|
 | 403, 404, 410 | Invalid Token |
 | 400           | Unknown Error |
-
-## Known / Unknown issues
-- When the service worker first gets registered, it requires the page to either reload, or a navigation to another section of the website before it will be ready to subscribe. 
