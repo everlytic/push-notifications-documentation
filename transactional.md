@@ -15,11 +15,13 @@ You can achieve these once off transactional notifications by calling our API wi
 Sending a Transactional Push Notification makes use of our API 3. If you are unfamiliar with how our API works, you can find the documentation [here](http://help.senderguide.com/api-documentation/the-api-endpoints/the-rest-api/).
 
 ### Request
-| Verb       | Route                                                              |
-|:-----------|:-------------------------------------------------------------------|
-| **`POST`** | `https://[Your URL]/api/3.0/push-notifications/transactional/send` |
+
+| Verb   | Route                                                              |
+|:-------|:-------------------------------------------------------------------|
+| `POST` | `https://[Your URL]/api/3.0/push-notifications/transactional/send` |
 
 #### Request Data
+
 | Parameter                     | Required | Type                        | Description                                                                                                                                                                                    |
 |:------------------------------|:---------|:----------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **project_id**                | yes      | `int`                       | The Project ID that you set up in Everlytic. This can be found on the listing of the Projects on the Push Projects page.                                                                       |
