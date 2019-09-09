@@ -1,6 +1,7 @@
 
-| NOTE: This SDK is no longer supported, but you can use it as a template. We recommend you manually implement our API in your app [Found here](../no-sdk/readme.html) |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| NOTE: This SDK is no longer supported, but you can use it as a template.                    |
+|:--------------------------------------------------------------------------------------------|
+| We recommend you manually implement our API in your app [Found here](../no-sdk/readme.html) |
 
 # Everlytic Push Android SDK
 
