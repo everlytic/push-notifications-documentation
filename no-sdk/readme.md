@@ -28,12 +28,12 @@ This is a string of variables separated by semicolons.
 
 | Variable Name | Description                                                                                                                               |
 |:--------------|:------------------------------------------------------------------------------------------------------------------------------------------|
-| p             | The Uuid of the project. You will need to use this for all API calls as a HTTP Header and also as a parameter for the `subscribe` method. |
+| p             | The 36 character Uuid of the project. You will need to use this for all API calls as a HTTP Header and also as a parameter for the `subscribe` method. |
 | i             | This is the URL that you will use with the endpoints listed below.                                                                        |
 
 
-## Interpreting our Payload
-You will need to interpret the payload that your app receives from Firebase. We use the `Data Message` Firebase message type. See the [Firebase Docs](https://firebase.google.com/docs/cloud-messaging/concept-options) for more information on this type.
+## Interpreting the payload of the Push Notification
+When you receive a push notification from Everlytic through Firebase, you will need to interpret the payload that your app receives from Firebase. We use the `Data Message` Firebase message type. See the [Firebase Docs](https://firebase.google.com/docs/cloud-messaging/concept-options) for more information on this type.
 
 The data message payload may have the following parameters:
 
@@ -48,10 +48,11 @@ The data message payload may have the following parameters:
 Here is an example of the data message payload:
 ```json
 {
+  // ...There may be other data above this
   "data": {
     "title": "Pharmacy Notification",
     "body": "Hi Joe, your script is ready for collection at the Randburg Pharmacy.",
-    "message_id": 13,
+    "message_id": "13",
     "$category": "Pharmacy",
     "@default": "launch="
   }
@@ -256,7 +257,7 @@ Cookie: PHPSESSID=8tmfmohpthi4605e515t677ldf; LB-Persist=!OuR/P8OarYs1eIXsRjndrb
 Host: live10.everlytic.net
 Connection: close
 User-Agent: Paw/3.1.8 (Macintosh; OS X/10.14.6) GCDHTTPRequest
-Content-Length: 149
+Content-Length: 116
 {
     "subscription_id":"123",
     "message_id":"12",
