@@ -1,7 +1,6 @@
 
-| NOTE: This SDK is no longer supported, but you can use it as a template. We recommend you manually implement our API in your app|
-| --- |
-[Manual Implementation of API](../no-sdk/readme.html) 
+| NOTE: This SDK is no longer supported, but you can use it as a template. We recommend you manually implement our API in your app [Found here](../no-sdk/readme.html) |
+|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 # Everlytic Push Xamarin SDK
 
