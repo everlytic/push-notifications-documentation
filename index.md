@@ -15,9 +15,11 @@ The basic overview of how you will set up Push Notifications is the following:
 1. Send out a bulk push notification to a group of people / send out an individual push notification to a single person
 
 ## SDK Documentation
-- [Android Documentation](./android/readme.html)
-- [Xamarin Documentation](./xamarin/readme.html)
 - [Web Push Documentation](./web/readme.html)
+- [Firebase App Implementation Documentation]('./no-sdk/readme.html')
+- [Android SDK Documentation](./android/readme.html) [Deprecated]
+- [Xamarin SDK Documentation](./xamarin/readme.html) [Deprecated]
+
 
 ## FAQ
 - [How do I add contacts to a Workflow that has Push Notifications?](./FAQ/workflows/readme.md)

@@ -1,3 +1,6 @@
+| NOTE: This SDK is no longer supported, but you can use it as a template. We recommend you manually implement our API in your app [Found here](../no-sdk/readme.html) |
+| --- |
+
 # Everlytic Push Android SDK
 
 [![Download](https://api.bintray.com/packages/everlytic/maven/push-notifications/images/download.svg) ](https://bintray.com/everlytic/maven/push-notifications/_latestVersion)
