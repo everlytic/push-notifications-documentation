@@ -1,5 +1,5 @@
 # Implement Everlytic/Firebase Push Notifications in your app 
-You can implement Everlytic's Push Notifications in your app by interpreting the payload received and manually calling our API for us to record stats.
+You can implement Everlytic Push Notifications in your app by interpreting the payload received and manually calling our API for us to record stats.
 
 ## Prerequisites
 - A Firebase Project set up for your app. See the official Firebase docs [here](https://firebase.google.com/docs/android/setup).
@@ -14,22 +14,22 @@ This configuration string is simply a base64 encoded string that contains settin
 Example:
 The following configuration string is pulled from Everlytic: 
 
-`
+```
 cD14eHh4eHh4eHgteHh4eC14eHh4LXh4eHgteHh4eHh4eHh4eHg7aT1odHRwczovL2xpdmUxMC5ldmVybHl0aWMubmV0
-`
+```
 
-When we base64 devode this string, we get the following:
+When we base64 decode this string, we get the following:
 
-`
+```
 p=xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx;i=https://live10.everlytic.net
-`
+```
 
 This is a string of variables separated by semicolons.
 
 | Variable Name | Description                                                                                                                               |
 |:--------------|:------------------------------------------------------------------------------------------------------------------------------------------|
-| p             | The 36 character Uuid of the project. You will need to use this for all API calls as a HTTP Header and also as a parameter for the `subscribe` method. |
-| i             | This is the URL that you will use with the endpoints listed below.                                                                        |
+| `p`             | The 36 character UUID of the project. You will need to use this for all API calls as a HTTP Header and also as a parameter for the `subscribe` method. |
+| `i`             | This is the URL that you will use with the endpoints listed below.                                                                        |
 
 
 ## Interpreting the payload of the Push Notification
@@ -46,7 +46,7 @@ The data message payload may have the following parameters:
 | $<custom_attribute> | All custom attributes set up during composition will start with a $ symbol. So these are completely dynamic.                                       |
 
 Here is an example of the data message payload:
-```json
+```json5
 {
   // ...There may be other data above this
   "data": {
@@ -59,18 +59,8 @@ Here is an example of the data message payload:
 }
 ```
 
-#### If you are using IOS
-If you are interpreting this payload in IOS, there are some additional parameters outside of the data object that become available to you:
-
-| Parameter Name                     | Description                                                               |
-|:-----------------------------------|:--------------------------------------------------------------------------|
-| apns.payload.aps.content-available | This will have a value of 1                                               |
-| apns.payload.aps.category          | This will be set to "everlytic-notification-general"                      |
-| apns.payload.aps.alert.title       | The title of the Push Notification set up in Everlytic during composition |
-| apns.payload.aps.alert.body        | The body of the Push Notification set up in Everlytic during composition  |
-
 ## Calling our API
-You will need to call Everlytic's API to record stats for the following:
+You will need to call the Everlytic API to record stats for the following:
 - Subscribe (Call this when you need to subscribe a contact for Push Notifications)
 - Unsubscribe (Call this when you need to unsubscribe a contact from Push Notifications)
 - Deliveries (Call this when the notification gets displayed)
@@ -78,22 +68,22 @@ You will need to call Everlytic's API to record stats for the following:
 - Dismissals (Call this when the user closes / swipes away the notification)
 
 ### How to call our API
-- All of the API methods used for Push Notification use their own API, which is different from Everlytic's standard API. We use the Project Uuid (From earlier) to authenticate you rather than a username and API key.
-- You will need to provide the Project Uuid as the custom HTTP Header `X-EV-Project-UUID`. You can see examples of this down below.
-- You will also need to set the content-type to `application/json` 
+- All of the API methods used for Push Notification use their own API, which is different from the Everlytic standard API. We use the Project UUID (From earlier) to authenticate you rather than a username and API key.
+- You will need to provide the Project UUID as the custom HTTP Header `X-EV-Project-UUID`. You can see examples of this down below.
+- You will also need to set the `Content-Type` HTTP header to `application/json` 
 
 ### Subscribe
 The subscribe method can be called whenever you want to subscribe the contact to Push Notifications. Everlytic will try and find a contact with either the Email Address or Unique Identifier and if the contact exists, it will subscribe them to Push Notifications, else it will create a new contact and subscribe this new contact to Push Notifications using the Email Address given.
 
 | Endpoint                                   |
 |:-------------------------------------------|
-| POST /servlet/push-notifications/subscribe |
+| ```POST /servlet/push-notifications/subscribe``` |
 
 Here is a list of the parameters and their descriptions:
 
 | Parameter Name      | Description                                                                                                                                                                                                                                                                                                                               |
 |:--------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| push_project_uuid   | The Project Uuid from the project settings from earlier                                                                                                                                                                                                                                                                                   |
+| push_project_uuid   | The Project UUID from the project settings from earlier                                                                                                                                                                                                                                                                                   |
 | contact             | This is the contact object that is used to uniquely identify the contact on Everlytic, it contains 2 required options and 1 optional parameter                                                                                                                                                                                            |
 | contact.push_token  | This is the FCM push token provided by the Firebase SDK in your app.                                                                                                                                                                                                                                                                      |
 | contact.email       | The email address used to identify the contact in Everlytic. If you would prefer to use the unique ID, you can do that too.                                                                                                                                                                                                               |
@@ -102,7 +92,7 @@ Here is a list of the parameters and their descriptions:
 | platform.type       | The type of platform used. Example: "Android"                                                                                                                                                                                                                                                                                             |
 | platform.version    | The version of the platform used.                                                                                                                                                                                                                                                                                                         |
 | device              | The device object containing details about the device.                                                                                                                                                                                                                                                                                    |
-| device.id           | A Uuid for this device that you need to uniquely generate for each device. You need to use Uuid Version 4 to generate this, which is a 36 character string. We recommend you generate this once and store it for all future requests. [See the Uuid Docs](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random)) |
+| device.id           | A UUID for this device that you need to uniquely generate for each device. You need to use UUID Version 4 to generate this, which is a 36 character string. We recommend you generate this once and store it for all future requests. [See the UUID Docs](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random)) |
 | device.manufacturer | The manufacturer of the device, e.g. Samsung                                                                                                                                                                                                                                                                                              |
 | device.model        | The model of the device, e.g. S5                                                                                                                                                                                                                                                                                                          |
 | device.type         | The type of device, e.g. Handset                                                                                                                                                                                                                                                                                                          |
@@ -111,15 +101,12 @@ Here is a list of the parameters and their descriptions:
 
 Here is an example of calling the subscribe method:
 
-```
+```http request
 POST /servlet/push-notifications/subscribe HTTP/1.1
 X-EV-Project-UUID: xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 Content-Type: application/json; charset=utf-8
-Cookie: PHPSESSID=8tmfmohpthi4605e515t677ldf; LB-Persist=!OuR/P8OarYs1eIXsRjndrbgI2S90RcxoqNXQVAU1R/ZMiH1oRPui2b4Xde9oUGhBwZfG1WsbsyXXzg==
 Host: live10.everlytic.net
 Connection: close
-User-Agent: Paw/3.1.8 (Macintosh; OS X/10.14.6) GCDHTTPRequest
-Content-Length: 338
 {
     "push_project_uuid":"xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
     "contact":{
@@ -199,28 +186,25 @@ The unsubscribe method can be called whenever you want to unsubscribe the contac
 
 | Endpoint                                     |
 |:---------------------------------------------|
-| POST /servlet/push-notifications/unsubscribe |
+| `POST /servlet/push-notifications/unsubscribe` |
 
 Here is a list of the parameters and their descriptions:
 
-| Parameter Name  | Description                                                                                                                                    |
-|:----------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|
-| subscription_id | The ID of the subscription you are unsubscribing. (This is the ID returned from the subscribe method)                                          |
-| device_id       | This is the same device ID that you generated for the subscribe method, to uniquely identify the device. |
-| datetime        | The date and time that the request was made. This needs to be in the format of [ISO8601](https://en.wikipedia.org/wiki/ISO_8601)               |
-| metadata        | The metadata object. This is currently not used, but it is still required, so just provide an empty object for this.                           |
+| Parameter Name  | Description                                                                                                                      |
+|:----------------|:---------------------------------------------------------------------------------------------------------------------------------|
+| subscription_id | The ID of the subscription you are unsubscribing. (This is the ID returned from the subscribe method)                            |
+| device_id       | This is the same device ID that you generated for the subscribe method, to uniquely identify the device.                         |
+| datetime        | The date and time that the request was made. This needs to be in the format of [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) |
+| metadata        | The metadata object. This is currently not used, but it is still required, so just provide an empty object for this.             |
 
 Here is an example of calling the unsubscribe method:
 
-```
+```http request
 POST /servlet/push-notifications/unsubscribe HTTP/1.1
 X-EV-Project-UUID: xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 Content-Type: application/json; charset=utf-8
-Cookie: PHPSESSID=8tmfmohpthi4605e515t677ldf; LB-Persist=!OuR/P8OarYs1eIXsRjndrbgI2S90RcxoqNXQVAU1R/ZMiH1oRPui2b4Xde9oUGhBwZfG1WsbsyXXzg==
 Host: live10.everlytic.net
 Connection: close
-User-Agent: Paw/3.1.8 (Macintosh; OS X/10.14.6) GCDHTTPRequest
-Content-Length: 149
 {
     "subscription_id":"123",
     "device_id":"95fe9437-7251-44bb-9522-adc00be89944",
@@ -236,9 +220,9 @@ There are three events that all have the same data parameters, but they just hav
 
 | Endpoint                                    | Description                                                                                |
 |:--------------------------------------------|:-------------------------------------------------------------------------------------------|
-| POST /servlet/push-notifications/deliveries | The endpoint to call when the notification gets displayed                                  |
-| POST /servlet/push-notifications/clicks     | The endpoint to call when the contact clicks/taps on on the notification                   |
-| POST /servlet/push-notifications/dismissals | The endpoint to call when the user closes or swipes away the notification (No interaction) |
+| `POST /servlet/push-notifications/deliveries` | The endpoint to call when the notification gets displayed                                  |
+| `POST /servlet/push-notifications/clicks`     | The endpoint to call when the contact clicks/taps on on the notification                   |
+| `POST /servlet/push-notifications/dismissals` | The endpoint to call when the user closes or swipes away the notification (No interaction) |
 
 | Parameter Name  | Description                                                                                                                                                        |
 |:----------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -249,15 +233,12 @@ There are three events that all have the same data parameters, but they just hav
 
 Here is an example of calling the deliveries method:
 
-```
+```http request
 POST /servlet/push-notifications/deliveries HTTP/1.1
 X-EV-Project-UUID: xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 Content-Type: application/json; charset=utf-8
-Cookie: PHPSESSID=8tmfmohpthi4605e515t677ldf; LB-Persist=!OuR/P8OarYs1eIXsRjndrbgI2S90RcxoqNXQVAU1R/ZMiH1oRPui2b4Xde9oUGhBwZfG1WsbsyXXzg==
 Host: live10.everlytic.net
 Connection: close
-User-Agent: Paw/3.1.8 (Macintosh; OS X/10.14.6) GCDHTTPRequest
-Content-Length: 116
 {
     "subscription_id":"123",
     "message_id":"12",
