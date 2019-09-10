@@ -101,7 +101,7 @@ Here is a list of the parameters and their descriptions:
 
 Here is an example of calling the subscribe method:
 
-```http request
+```
 POST /servlet/push-notifications/subscribe HTTP/1.1
 X-EV-Project-UUID: xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 Content-Type: application/json; charset=utf-8
@@ -199,7 +199,7 @@ Here is a list of the parameters and their descriptions:
 
 Here is an example of calling the unsubscribe method:
 
-```http request
+```
 POST /servlet/push-notifications/unsubscribe HTTP/1.1
 X-EV-Project-UUID: xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 Content-Type: application/json; charset=utf-8
@@ -233,7 +233,7 @@ There are three events that all have the same data parameters, but they just hav
 
 Here is an example of calling the deliveries method:
 
-```http request
+```
 POST /servlet/push-notifications/deliveries HTTP/1.1
 X-EV-Project-UUID: xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 Content-Type: application/json; charset=utf-8
