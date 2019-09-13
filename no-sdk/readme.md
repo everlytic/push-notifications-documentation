@@ -1,10 +1,19 @@
-# Implement Everlytic/Firebase Push Notifications in your app 
-You can implement Everlytic's Push Notifications in your app by interpreting the payload received and manually calling our API for us to record stats.
+# Implement Everlytic/Firebase push notifications in your app 
+You can implement Everlytic's push notifications in your app by interpreting the payload received and manually calling our API for us to record stats.
+
+## Overview
+The way we send push notifications to your app is through [Firebase](https://firebase.google.com/). The basic flow is the following:
+1. Grab the Firebase service key for your Firebase project, assign it to a list in Everlytic.
+1. Call Subscribe API endpoint in your app to subscribe contacts to Everlytic.
+1. Send a push notification From Everlytic. We use the Firebase key to call Firebase's API to deliver the push notification to your app.
+1. Interpret the payload received from Firebase in your app.
+1. Call our stats API endpoint to tell Everlytic about a delivery.
+1. Call our click/dismissal API endpoints if a contact clicked or dismissed the notification.
 
 ## Prerequisites
 - A Firebase Project set up for your app. See the official Firebase docs [here](https://firebase.google.com/docs/android/setup).
 - **Note:** Make sure that the FCM API is enabled on your Firebase Account.
-- A Push Notification Project set up inside Everlytic
+- A push notification Project set up inside Everlytic
 
 ## Using the Everlytic configuration string
 Copy your Everlytic Push Project SDK configuration string. See [Setting Up Your Everlytic Push Project](../list_setup.md).
@@ -32,15 +41,15 @@ This is a string of variables separated by semicolons.
 | i             | This is the URL that you will use with the endpoints listed below.                                                                        |
 
 
-## Interpreting the payload of the Push Notification
+## Interpreting the payload of the push notification
 When you receive a push notification from Everlytic through Firebase, you will need to interpret the payload that your app receives from Firebase. We use the `Data Message` Firebase message type. See the [Firebase Docs](https://firebase.google.com/docs/cloud-messaging/concept-options) for more information on this type.
 
 The data message payload may have the following parameters:
 
 | Parameter Name      | Description                                                                                                                                        |
 |:--------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------|
-| title               | The title of the Push Notification set up in Everlytic during composition                                                                          |
-| body                | The body of the Push Notification set up in Everlytic during composition                                                                           |
+| title               | The title of the push notification set up in Everlytic during composition                                                                          |
+| body                | The body of the push notification set up in Everlytic during composition                                                                           |
 | message_id          | The unique identifier of the message being received. This will be used when calling our API to let us know which message to tie the stats back to. |
 | @default            | This is a deprecated field, and you can safely ignore it                                                                                           |
 | $<custom_attribute> | All custom attributes set up during composition will start with a $ symbol. So these are completely dynamic.                                       |
@@ -66,24 +75,24 @@ If you are interpreting this payload in IOS, there are some additional parameter
 |:-----------------------------------|:--------------------------------------------------------------------------|
 | apns.payload.aps.content-available | This will have a value of 1                                               |
 | apns.payload.aps.category          | This will be set to "everlytic-notification-general"                      |
-| apns.payload.aps.alert.title       | The title of the Push Notification set up in Everlytic during composition |
-| apns.payload.aps.alert.body        | The body of the Push Notification set up in Everlytic during composition  |
+| apns.payload.aps.alert.title       | The title of the push notification set up in Everlytic during composition |
+| apns.payload.aps.alert.body        | The body of the push notification set up in Everlytic during composition  |
 
 ## Calling our API
 You will need to call Everlytic's API to record stats for the following:
-- Subscribe (Call this when you need to subscribe a contact for Push Notifications)
-- Unsubscribe (Call this when you need to unsubscribe a contact from Push Notifications)
+- Subscribe (Call this when you need to subscribe a contact for push notifications)
+- Unsubscribe (Call this when you need to unsubscribe a contact from push notifications)
 - Deliveries (Call this when the notification gets displayed)
 - Clicks (Call this when the user clicks on the notification)
 - Dismissals (Call this when the user closes / swipes away the notification)
 
 ### How to call our API
-- All of the API methods used for Push Notification use their own API, which is different from Everlytic's standard API. We use the Project Uuid (From earlier) to authenticate you rather than a username and API key.
+- All of the API methods used for push notification use their own API, which is different from Everlytic's standard API. We use the Project Uuid (From earlier) to authenticate you rather than a username and API key.
 - You will need to provide the Project Uuid as the custom HTTP Header `X-EV-Project-UUID`. You can see examples of this down below.
 - You will also need to set the content-type to `application/json` 
 
 ### Subscribe
-The subscribe method can be called whenever you want to subscribe the contact to Push Notifications. Everlytic will try and find a contact with either the Email Address or Unique Identifier and if the contact exists, it will subscribe them to Push Notifications, else it will create a new contact and subscribe this new contact to Push Notifications using the Email Address given.
+The subscribe method can be called whenever you want to subscribe the contact to push notifications. Everlytic will try and find a contact with either the Email Address or Unique Identifier and if the contact exists, it will subscribe them to push notifications, else it will create a new contact and subscribe this new contact to push notifications using the Email Address given.
 
 | Endpoint                                   |
 |:-------------------------------------------|
@@ -177,7 +186,7 @@ Another example of a Response that gets returned from Everlytic if the contact h
     "status": "error",
     "data": {
         "messages": [
-            "This token is already subscribed to Push Notifications on this list."
+            "This token is already subscribed to push notifications on this list."
         ],
         "subscription": {
             "pns_id": "123",
@@ -195,7 +204,7 @@ Another example of a Response that gets returned from Everlytic if the contact h
 Note: You will need to store the subscription ID (pns_id), so that you can use it for the other API calls.
 
 ### Unsubscribe
-The unsubscribe method can be called whenever you want to unsubscribe the contact from Push Notifications. (Example: when the user logs out of the app) 
+The unsubscribe method can be called whenever you want to unsubscribe the contact from push notifications. (Example: when the user logs out of the app) 
 
 | Endpoint                                     |
 |:---------------------------------------------|
