@@ -4,7 +4,8 @@ You can implement Everlytic Push Notifications in your app by interpreting the p
 ## Overview
 The way we send push notifications to your app is through [Firebase](https://firebase.google.com/). The basic flow is the following:
 1. Grab the Firebase service key for your Firebase project, assign it to a list in Everlytic.
-1. Call Subscribe API endpoint in your app to subscribe contacts to Everlytic.
+1. Get the configuration string given to you by Everlytic, to use in your app.
+1. Call Everlytic's subscribe API endpoint in your app to subscribe contacts to Everlytic.
 1. Send a push notification From Everlytic. We use the Firebase key to call Firebase's API to deliver the push notification to your app.
 1. Interpret the payload received from Firebase in your app.
 1. Call our stats API endpoint to tell Everlytic about a delivery.
