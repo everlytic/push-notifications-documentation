@@ -9,11 +9,14 @@ Almost all modern browsers are supported on most platforms, with the exception o
 | Browser     | Windows PC | macOS | Android | iOS (iPhone) |
 |:------------|:-----------|:------|:--------|:-------------|
 | **Chrome**  | Yes        | Yes   | Yes     | No           |
-| **Firefox** | Yes        | Yes   | Yes     | No           |
-| **Edge**    | Yes        | Yes   | Yes     | *N/A*        |
-| **Opera**   | Yes        | Yes   | Yes     | No           |
+| **Firefox** | Yes        | Yes   | No*     | No           |
+| **Edge**    | Yes        | *N/A* | No      | *N/A*        |
+| **Opera**   | Yes        | No*   | Yes     | No           |
 | **Yandex**  | Yes        | Yes   | Yes     | *N/A*        |
 | **Safari**  | No         | No    | *N/A*   | No           |
+
+| *  | We are working on a fix for these |
+|:---|:----------------------------------|
 
 ## Getting Started
 These instructions will get you up and running and receiving Push Notifications on your website in no time.
