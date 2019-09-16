@@ -15,8 +15,7 @@ Almost all modern browsers are supported on most platforms, with the exception o
 | **Yandex**  | Yes        | Yes   | Yes     | *N/A*        |
 | **Safari**  | No         | No    | *N/A*   | No           |
 
-| *  | We are working on a fix for these |
-|:---|:----------------------------------|
+**\* We are working on a fix for these**
 
 ## Getting Started
 These instructions will get you up and running and receiving Push Notifications on your website in no time.
