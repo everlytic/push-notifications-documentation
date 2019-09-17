@@ -9,7 +9,7 @@ Almost all modern browsers are supported on most platforms, with the exception o
 | Browser     | Windows PC | macOS | Android | iOS (iPhone) |
 |:------------|:-----------|:------|:--------|:-------------|
 | **Chrome**  | Yes        | Yes   | Yes     | No           |
-| **Firefox** | Yes        | Yes   | No*     | No           |
+| **Firefox** | Yes        | Yes   | Yes     | No           |
 | **Edge**    | Yes        | *N/A* | No      | *N/A*        |
 | **Opera**   | Yes        | No*   | Yes     | No           |
 | **Yandex**  | Yes        | Yes   | Yes     | *N/A*        |
