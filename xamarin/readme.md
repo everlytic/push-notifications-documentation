@@ -4,7 +4,7 @@
 | We recommend you manually implement our API in your app [Found here](../no-sdk/readme.html) |
 
 # Everlytic Push Xamarin SDK
-
+This is a Xamarin wrapper for the Android SDK.  
 - [SDK Reference](quick_reference.md)
 - [Everlytic Push List Setup](../list_setup.md)
 - [Change Log](https://everlytic.github.io/push-notifications-sdk-xamarin/changelog.html)

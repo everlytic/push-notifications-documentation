@@ -18,7 +18,7 @@ The basic overview of how you will set up Push Notifications is the following:
 - [Web Push Documentation](./web/readme.html)
 - [Firebase App Implementation Documentation](./no-sdk/readme.html)
 - [Android SDK Documentation](./android/readme.html) [Deprecated]
-- [Xamarin SDK Documentation](./xamarin/readme.html) [Deprecated]
+- [Xamarin (Android Only) SDK Documentation](./xamarin/readme.html) [Deprecated]
 
 
 ## FAQ
