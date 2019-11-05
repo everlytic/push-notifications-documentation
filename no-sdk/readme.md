@@ -36,10 +36,10 @@ p=xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx;i=https://live10.everlytic.net
 
 This is a string of variables separated by semicolons.
 
-| Variable Name | Description                                                                                                                               |
-|:--------------|:------------------------------------------------------------------------------------------------------------------------------------------|
-| `p`             | The 36 character UUID of the project. You will need to use this for all API calls as a HTTP Header and also as a parameter for the `subscribe` method. |
-| `i`             | This is the URL that you will use with the endpoints listed below.                                                                        |
+| Variable Name | Description                                                                                                                                            |
+|:--------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `p`           | The 36 character UUID of the project. You will need to use this for all API calls as a HTTP Header and also as a parameter for the `subscribe` method. |
+| `i`           | This is the URL that you will use with the endpoints listed below.                                                                                     |
 
 
 ## Interpreting the payload of the Push Notification
@@ -228,8 +228,8 @@ This will return a status of either "success" or "error", letting you know wheth
 ### Events
 There are three events that all have the same data parameters, but they just have different endpoints. 
 
-| Endpoint                                    | Description                                                                                |
-|:--------------------------------------------|:-------------------------------------------------------------------------------------------|
+| Endpoint                                      | Description                                                                                |
+|:----------------------------------------------|:-------------------------------------------------------------------------------------------|
 | `POST /servlet/push-notifications/deliveries` | The endpoint to call when the notification gets displayed                                  |
 | `POST /servlet/push-notifications/clicks`     | The endpoint to call when the contact clicks/taps on on the notification                   |
 | `POST /servlet/push-notifications/dismissals` | The endpoint to call when the user closes or swipes away the notification (No interaction) |
