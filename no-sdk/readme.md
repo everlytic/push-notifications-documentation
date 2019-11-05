@@ -257,3 +257,96 @@ Connection: close
 }
 ```
 This will return a response with a status of either "success" or "error"
+
+### History
+There is a Push History API Method that you can call to get a list of messages sent to a contact. 
+
+| Endpoint                                    |
+|:--------------------------------------------|
+| `POST /servlet/push-notifications/history/contact` |
+
+
+| Parameter Name    | Description                                                                                                                              |
+|:------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|
+| contact           | This is the contact object that is used to uniquely identify the contact on Everlytic. One of the following sub parameters are required. |
+| contact.email     | The email address used to identify the contact in Everlytic. If you would prefer to use the unique ID, you can do that.                  |
+| contact.unique_id | Set this parameter if you would like to use the unique ID to identify the contact in Everlytic instead of the email address.             |
+
+Here is an example of calling the history method:
+
+```
+POST /servlet/push-notifications/history/contact HTTP/1.1
+X-EV-Project-UUID: xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
+Content-Type: application/json; charset=utf-8
+Host: live10.everlytic.net
+Connection: close
+{  
+    "contact":{
+        "email":"example@everlytic.com"
+    }
+}
+```
+
+
+If your request is valid, you will get a JSON Result that will be structured like the following:
+
+| Result Variable Name | Description                                                                                                                                                                         |
+|:---------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| status               | This will either be "success" or "error". "error" will appear if you have supplied parameters incorrectly, or the contact doesn't exist or is not subscribed to Push Notifications. |
+| data                 | The object that contains any additional data about the response                                                                                                                     |
+| data.messages        | An array that contains more information about the status of the request.                                                                                                            |
+
+Each message in the array has the following properties:
+
+| Message Property | Description                                                                                                                                    |
+|:-----------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|
+| title            | The title of the Push Message                                                                                                                  |
+| body             | The main body of the Push Message                                                                                                              |
+| date             | The date the message was created by the Everlytic User. (This is NOT the sent date)                                                            |
+| click_action     | Will be either "open-url" (For Web Push) or "open-app" (For App Push)                                                                          |
+| click_action_url | The URL that the browser must go to when a user clicks on the Push. (This is only applicable for Web Push)                                     |
+| additional_data  | An array that contains the additional data set up during composition. (This is only applicable for App Push) See example for more information. |
+
+Example of may be returned:
+
+```json
+{
+    "status": "success",
+    "data": {
+        "messages": [
+            {
+                "title": "Test Push",
+                "body": "This is a Test Push Notification",
+                "date": "2019-09-28T10:25:23+02:00",
+                "click_action": "open-url",
+                "click_action_url": "http://www.test.com",
+                "additional_data": [
+                    {
+                        "name": "asd",
+                        "value": "asd"
+                    }
+                ]
+            },
+            {
+                "title": "Test",
+                "body": "Another test Push Notification",
+                "date": "2019-09-28T10:32:02+02:00",
+                "click_action": "open-url",
+                "click_action_url": "",
+                "additional_data": [
+                    {
+                        "name": "Category",
+                        "value": "Promotions"
+                    },
+                    {
+                        "name": "ExternalWebLink",
+                        "value": "https://example.com/example"
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
+
