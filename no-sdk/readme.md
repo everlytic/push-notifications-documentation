@@ -259,18 +259,19 @@ Connection: close
 This will return a response with a status of either "success" or "error"
 
 ### History
-There is a Push History API Method that you can call to get a list of messages sent to a contact. 
+There is a Push History API Method that you can call to get a list of messages sent to a contact. Note that this will only pull messages sent to the project used in the authentication.
 
-| Endpoint                                    |
-|:--------------------------------------------|
+| Endpoint                                           |
+|:---------------------------------------------------|
 | `POST /servlet/push-notifications/history/contact` |
 
 
-| Parameter Name    | Description                                                                                                                              |
-|:------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|
-| contact           | This is the contact object that is used to uniquely identify the contact on Everlytic. One of the following sub parameters are required. |
-| contact.email     | The email address used to identify the contact in Everlytic. If you would prefer to use the unique ID, you can do that.                  |
-| contact.unique_id | Set this parameter if you would like to use the unique ID to identify the contact in Everlytic instead of the email address.             |
+| Parameter Name    | Description                                                                                                                                                                                                                                                     |
+|:------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| contact           | This is the contact object that is used to uniquely identify the contact on Everlytic. One of the following sub parameters are required.                                                                                                                        |
+| contact.email     | The email address used to identify the contact in Everlytic. If you would prefer to use the unique ID, you can do that.                                                                                                                                         |
+| contact.unique_id | Set this parameter if you would like to use the unique ID to identify the contact in Everlytic instead of the email address.                                                                                                                                    |
+| from_datetime     | *Optional parameter* If you want to only pull messages since a particular date, you can provide this parameter. It accepts most formats, but we recommend using ISO8601, (e.g. "2019-09-28T10:25:23+02:00") or Just simple Date Time (e.g. "2019-09-28 10:25"). |
 
 Here is an example of calling the history method:
 
@@ -283,10 +284,10 @@ Connection: close
 {  
     "contact":{
         "email":"example@everlytic.com"
-    }
+    },
+   "from_datetime" : "2019-09-28 10:20"
 }
 ```
-
 
 If your request is valid, you will get a JSON Result that will be structured like the following:
 
