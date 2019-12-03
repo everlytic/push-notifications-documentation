@@ -54,6 +54,8 @@ The options object that you need to provide to the `init` has the following fiel
 - `installImmediately` Set this to true if you would like the SDK to be available immediately after initializing it. **If this is set to true, the page will reload the first time a contact lands on the page.** Without this setting, the contact will only be able to be subscribed once the contact has either reloaded the page, or navigated to another part of the website.
 - `debug` Set this option if you would like to see debug console output and disable the pre-flight check caching.  
 
+The `init` method returns a promise if you would like to call subscribe immediately after initializing. 
+
 ## Getting a hash from Everlytic
 Everlytic needs to be set up to have a special list to send Push Notifications to. We recommend using a newly created list for this, but you can also use one of the lists you have already set up.
 1. Navigate to the `Push Projects` submenu under `Push Notifications` menu item. If your list is already set up here, you can jump to Step 3.
@@ -62,14 +64,15 @@ Everlytic needs to be set up to have a special list to send Push Notifications t
 
 ## General SDK Usage
 There are three main methods that you can call on the Everlytic SDK. They all return a promise that contains a result:
-- `subscribe(contactObject)` This method you can call manually to subscribe a contact to Everlytic using an email address to identify the contact. If the contact doesn't exist in Everlytic, it will create one.
+- `subscribe(contactObject)` This method you can call manually to subscribe a contact to Everlytic using an email address to identify the contact. If the contact doesn't exist in Everlytic, it will create one. There is a second parameter which can disable the stylized double opt-in modal from popping up if you don't want it.
 
     See the following example:
     ```javascript
     //... This code comes after the SDK init method
     SDK.subscribe({
-        'email' : 'example@everlytic.com'
-    }).then(function(result) {
+        'email' : 'example@everlytic.com',
+    }, true // This is an optional second parameter to disable the double opt-in modal from popping up. 
+    ).then(function(result) {
         console.log(result) // Do something with the result.
     }).catch(function(error){
         console.error(error); // Something went wrong.      
