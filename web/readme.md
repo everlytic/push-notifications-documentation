@@ -122,6 +122,25 @@ There are three main methods that you can call on the Everlytic SDK. They all re
     });
     ``` 
     
+## Advanced SDK Usage
+The way you want to use the Push Modal on your website can be changed in many ways, using the above options. 
+
+### Customization Options for the preflight modal
+If you choose to use the preflight modal, know that it is quite customizable using some hidden `preflight` options. See the following example when setting up the SDK:
+
+```javascript
+SDK.init({
+    hash:"YOUR_HASH_HERE",
+    autoSubscribe: true,
+    preflight: {
+        title: "We would like to send you notifications for the latest news and updates.",
+        message: "Unsubscribe anytime in your browser settings.",
+        icon: "https://pushsdk.mailercdn.net/icon.png",
+        primaryColour: "#94d229"
+    }
+});
+```
+Above are the default variables that get used if you don't provide any `preflight` options. But you may override any of these variables, and they will change on the modal that pops up.
 
 ## Sample App
 You can find look at our [Sample App](https://github.com/everlytic/push-notifications-web-sample-app) that implements the SDK and the above methods. Just be sure to replace the hash with the one you get from Everlytic.
