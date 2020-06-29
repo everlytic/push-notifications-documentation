@@ -1,4 +1,4 @@
-# Push Web SDK
+# Web Push SDK
 This is the Web version of our Push Notification SDK. It enables your website to serve Push Notifications to your user base.
 
 You can find the source code [here](https://github.com/everlytic/push-notifications-sdk-web) 

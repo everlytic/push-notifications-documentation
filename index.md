@@ -2,4 +2,4 @@
 Technical docs for all things Senderguide related. 
 
 ## SDK Documentation
-- [Web Push Documentation](./push/readme.html)
+- [Push Notifications Documentation](./push/readme.html)
