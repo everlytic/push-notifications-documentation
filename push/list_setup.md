@@ -12,7 +12,7 @@
 1. In the next step, select _Create Key_
     - Key Type: **JSON**
     
-### Setup Everlytic Push Notification List
+### Setup Push Notification List
 
 1. Navigate to _Push Notifications > Push Projects_
 1. Select _Add Push Notification Project_

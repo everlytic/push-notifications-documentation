@@ -1,5 +1,5 @@
-# Everlytic Push Web SDK
-This is the Web version of Everlytic's Push Notification SDK. It enables your website to serve Everlytic's Push Notifications to your user base.
+# Push Web SDK
+This is the Web version of our Push Notification SDK. It enables your website to serve Push Notifications to your user base.
 
 You can find the source code [here](https://github.com/everlytic/push-notifications-sdk-web) 
 
@@ -49,28 +49,28 @@ To ensure that you have added the file correctly, you should be able to go to th
 ``` 
 The options object that you need to provide to the `init` has the following fields:
 
-- `hash` You will get this hash from Everlytic _(See next section)_.
+- `hash` You will get this hash from the System _(See next section)_.
 - `autoSubscribe` Set this option if you would like your website to automatically subscribe people to Push Notifications (You won't need to call the SDK's `subscribe` method manually). _Note that this will pop up a modal asking the contact to enter their email address or to subscribe anonymously._
 - `installImmediately` Set this to true if you would like the SDK to be available immediately after initializing it. **If this is set to true, the page will reload the first time a contact lands on the page.** Without this setting, the contact will only be able to be subscribed once the contact has either reloaded the page, or navigated to another part of the website.
 - `debug` Set this option if you would like to see debug console output and disable the pre-flight check caching.  
 
 The `init` method returns a promise if you would like to call subscribe immediately after initializing. 
 
-## Getting a hash from Everlytic
-Everlytic needs to be set up to have a special list to send Push Notifications to. We recommend using a newly created list for this, but you can also use one of the lists you have already set up.
+## Getting a hash from the System
+The System needs to be set up to have a special list to send Push Notifications to. We recommend using a newly created list for this, but you can also use one of the lists you have already set up.
 1. Navigate to the `Push Projects` submenu under `Push Notifications` menu item. If your list is already set up here, you can jump to Step 3.
 2. Click on the `Add Push Notification Project` button. This should bring up a modal with some options. Set the `Project Type` to `Web Push`, select your list and save.
 3. You should see your list appear in the `Linked List` listing. On the right, click on `SDK Configuration`. This will bring up a modal with the `hash` that you need to initialize the SDK.
 
 ## General SDK Usage
-There are three main methods that you can call on the Everlytic SDK. They all return a promise that contains a result:
-- `subscribe(contactObject)` This method you can call manually to subscribe a contact to Everlytic using an email address to identify the contact. If the contact doesn't exist in Everlytic, it will create one. There is a second parameter which can disable the stylized double opt-in modal from popping up if you don't want it.
+There are three main methods that you can call on the SDK. They all return a promise that contains a result:
+- `subscribe(contactObject)` This method you can call manually to subscribe a contact using an email address to identify the contact. If the contact doesn't exist, it will create one. There is a second parameter which can disable the stylized double opt-in modal from popping up if you don't want it.
 
     See the following example:
     ```javascript
     //... This code comes after the SDK init method
     SDK.subscribe({
-        'email' : 'example@everlytic.com',
+        'email' : 'example@senderguide.com',
     }, true // This is an optional second parameter to disable the double opt-in modal from popping up. 
     ).then(function(result) {
         console.log(result) // Do something with the result.
@@ -101,7 +101,7 @@ There are three main methods that you can call on the Everlytic SDK. They all re
     ```
 
     
-- `subscribeAnonymous()` You can call this method if you don't have access to the contact's email address and you also don't want to prompt the contact to enter their email address. It will subscribe all devices under the anonymous contact in everlytic.
+- `subscribeAnonymous()` You can call this method if you don't have access to the contact's email address and you also don't want to prompt the contact to enter their email address. It will subscribe all devices under the anonymous contact in the System.
     ```javascript
     //... This code comes after the SDK init method that did not supply the autoSubscribe option
     SDK.subscribeAnonymous().then(function(result) {
@@ -143,7 +143,7 @@ SDK.init({
 Above are the default variables that get used if you don't provide any `preflight` options. But you may override any of these variables, and they will change on the modal that pops up.
 
 ## Sample App
-You can find look at our [Sample App](https://github.com/everlytic/push-notifications-web-sample-app) that implements the SDK and the above methods. Just be sure to replace the hash with the one you get from Everlytic.
+Look at our [Sample App](https://github.com/everlytic/push-notifications-web-sample-app) that implements the SDK and the above methods. Just be sure to replace the hash with the one you get from the System.
 
 ## Error Codes
 At some point you might get an error response with certain codes. Here are some common codes and what they mean:

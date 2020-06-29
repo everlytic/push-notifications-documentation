@@ -1,4 +1,4 @@
-# Everlytic Transactional Push Notifications
+# Transactional Push Notifications
 
 Transactional Push Notifications allow you to send out a push notification to an individual contact. This differs from Bulk Notifications and is useful for contact event based notifications. An example would be something like:  
 
@@ -7,9 +7,9 @@ Transactional Push Notifications allow you to send out a push notification to an
 You can achieve these once off transactional notifications by calling our API with the message that needs to go out.
 
 ## Prerequisites
-1. A project set up in Everlytic and on your app/website - [Documentation](./index.html)
-1. The contact needs to have already subscribed to Everlytic from your app/website (We need their token to send to)
-1. API Access to Everlytic.
+1. A project set up in the System and on your app/website - [Documentation](./index.html)
+1. The contact needs to have already subscribed from your app/website (We need their token to send to)
+1. API Access to the System.
 
 ## Getting Started
 Sending a Transactional Push Notification makes use of our API 3. If you are unfamiliar with how our API works, you can find the documentation [here](http://help.senderguide.com/api-documentation/the-api-endpoints/the-rest-api/).
@@ -24,12 +24,12 @@ Sending a Transactional Push Notification makes use of our API 3. If you are unf
 
 | Parameter                     | Required | Type                        | Description                                                                                                                                                                                    |
 |:------------------------------|:---------|:----------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **project_id**                | yes      | `int`                       | The Project ID that you set up in Everlytic. This can be found on the listing of the Projects on the Push Projects page.                                                                       |
-| **category**                  | yes      | `string`                    | A tag to give to the message you are sending. All the messages sent under the same tag will be grouped in Everlytic.                                                                           |
+| **project_id**                | yes      | `int`                       | The Project ID that you set up in the System. This can be found on the listing of the Projects on the Push Projects page.                                                                       |
+| **category**                  | yes      | `string`                    | A tag to give to the message you are sending. All the messages sent under the same tag will be grouped in the System.                                                                           |
 | **contact**                   | yes      | `object`                    | The object containing the contact to send to. See below for the different ways to identify a contact                                                                                           |
-| contact.**contact_id**        | no       | `int`                       | If this is supplied, the contact will be looked up using their Everlytic ID                                                                                                                    |
+| contact.**contact_id**        | no       | `int`                       | If this is supplied, the contact will be looked up using their System ID                                                                                                                    |
 | contact.**contact_email**     | no       | `string`                    | If this is supplied, the contact will be looked up using their email address.                                                                                                                  |
-| contact.**contact_unique_id** | no       | `string`                    | If this is supplied, the contact will be looked up using their Unique ID. (This Unique ID can be set by you in Everlytic)                                                                      |
+| contact.**contact_unique_id** | no       | `string`                    | If this is supplied, the contact will be looked up using their Unique ID. (This Unique ID can be set by you in the System)                                                                      |
 | **message**                   | yes      | `object`                    | The object containing the message details to send to the contact.                                                                                                                              |
 | message.**title**             | no       | `string`                    | Title of the message to send out. This can be personalized (See example below).                                                                                                                |
 | message.**body**              | yes      | `string`                    | Main body text of the message to send out. This can be personalized (See example below).                                                                                                       |
@@ -43,7 +43,7 @@ Sending a Transactional Push Notification makes use of our API 3. If you are unf
     "project_id": 2,
     "category": "Pharmacy",
     "contact": {
-        "contact_email": "test@everlytic.com"
+        "contact_email": "test@senderguide.com"
     },
         "message": {
         "body": "Hello {{contact.contact_name}}, your script is ready for collection at Randburg Pharmacy",
@@ -59,7 +59,7 @@ Sending a Transactional Push Notification makes use of our API 3. If you are unf
     "project_id": 2,
     "category": "Pharmacy",
     "contact": {
-        "contact_email": "test@everlytic.com"
+        "contact_email": "test@senderguide.com"
     },
         "message": {
         "title": "Script Ready!",

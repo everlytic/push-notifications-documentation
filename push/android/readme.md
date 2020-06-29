@@ -3,7 +3,7 @@
 |:--------------------------------------------------------------------------------------------|
 | We recommend you manually implement our API in your app [Found here](../no-sdk/readme.html) |
 
-# Everlytic Push Android SDK
+# Push Android SDK
 
 [![Download](https://api.bintray.com/packages/everlytic/maven/push-notifications/images/download.svg) ](https://bintray.com/everlytic/maven/push-notifications/_latestVersion)
 
@@ -15,7 +15,7 @@ You can find the source code [here](https://github.com/everlytic/push-notificati
 
 ## Getting Started
 
-### Add the Everlytic Push Notification SDK 
+### Add the Push Notification SDK 
 1. In your module-level `build.gradle` file, add the following repository
     ```groovy
     repositories {
@@ -26,7 +26,7 @@ You can find the source code [here](https://github.com/everlytic/push-notificati
         }
     }
     ```
-1. Add the Everlytic Push Notification SDK dependency to your `build.gradle` file, replacing the `<version>` tag with the current SDK version.
+1. Add the Push Notification SDK dependency to your `build.gradle` file, replacing the `<version>` tag with the current SDK version.
     
     ```groovy
     dependencies {
@@ -37,7 +37,7 @@ You can find the source code [here](https://github.com/everlytic/push-notificati
 
 ### Set Up the SDK
 
-1. Copy your Everlytic Push Project SDK configuration string. See [Setting Up Your Everlytic Push Project](../list_setup.md).
+1. Copy your Push Project SDK configuration string. See [Setting Up Your Everlytic Push Project](../list_setup.md).
 1. Add your configuration string to your `AndroidManifest.xml` 
     ```xml
     <application>

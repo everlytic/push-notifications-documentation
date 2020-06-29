@@ -53,4 +53,4 @@ Notification color is derived from the `styles.xml` `colorPrimary` value
 
 ## Known Issues
 
-- The app may crash if there is a network connection issue, E.g. Everlytic domain cannot be resolved
+- The app may crash if there is a network connection issue, E.g. System domain cannot be resolved

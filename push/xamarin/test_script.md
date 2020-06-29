@@ -1,4 +1,4 @@
-## Testing SDK without using the Everlytic Interface
+## Testing SDK without using the System Interface
 
 Simple testing without needing to send messages through the product.
 

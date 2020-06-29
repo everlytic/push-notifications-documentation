@@ -3,10 +3,10 @@
 |:--------------------------------------------------------------------------------------------|
 | We recommend you manually implement our API in your app [Found here](../no-sdk/readme.html) |
 
-# Everlytic Push Xamarin SDK
+# Push Xamarin SDK
 This is a Xamarin wrapper for the Android SDK.  
 - [SDK Reference](quick_reference.md)
-- [Everlytic Push List Setup](../list_setup.md)
+- [System Push List Setup](../list_setup.md)
 - [Change Log](https://everlytic.github.io/push-notifications-sdk-xamarin/changelog.html)
 - [Test Scripts](test_script.md)
 - [Sample App](https://github.com/everlytic/push-notifications-xamarin-sample-app)
@@ -20,7 +20,7 @@ You can find the source code [here](https://github.com/everlytic/push-notificati
 ## Notes
 
 - iOS is currently not implemented. Called methods will print to the console when run on an iOS device.
-- A Test mode is provided during the alpha phase. This mocks HTTP requests to the Everlytic API for basic testing.
+- A Test mode is provided during the alpha phase. This mocks HTTP requests to the System API for basic testing.
 
 ## Getting Started
 
@@ -43,7 +43,7 @@ public class App : Application
 
         MainPage = new MainPage();
         
-        // Initialize the Everlytic with a configuration string
+        // Initialize with a configuration string
         Everlytic.Instance
             //.SetTestMode(true) // optional. Default is false
             .Initialize("<your configuration string>");
@@ -69,7 +69,7 @@ public class App : Application
     {
         base.OnCreate();
             
-        // Initialize the Everlytic SDK with a configuration string
+        // Initialize the SDK with a configuration string
         Everlytic.Instance
             //.SetTestMode(true) // optional. Default is false
             .Initialize("<your configuration string>");
