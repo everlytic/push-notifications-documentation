@@ -152,3 +152,8 @@ At some point you might get an error response with certain codes. Here are some 
 |:--------------|:--------------|
 | 403, 404, 410 | Invalid Token |
 | 400           | Unknown Error |
+
+## FAQ
+
+* [Why are some of my users not receiving their Push Notifications?](./faq/delivery_problems.html)
+* [Why are my delivery rates low?](./faq/delivery_problems.html)
