@@ -120,7 +120,7 @@ Connection: close
 {
     "push_project_uuid":"xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
     "contact":{
-        "email":"example@senderguide.com",
+        "email":"example@example.com",
         "push_token":"dzAeHJ58jnU:APA91bFK-AupLmYnlrWpNwh9fgnAKcnyHvlpATVi2fqG04rcTjYUOJ0tVVdGOzhzME0l_nxCiWtPAnkWXq47361qW2K20tpm57tdfQMklAqoDw1_L_Kg50_SRRQwgFHjAM3gFLsOJzqy"
     },
     "platform":{
@@ -283,7 +283,7 @@ Host: live10.everlytic.net
 Connection: close
 {  
     "contact":{
-        "email":"example@senderguide.com"
+        "email":"example@example.com"
     },
    "from_datetime" : "2019-09-28 10:20"
 }

@@ -1,4 +1,4 @@
-# Senderguide Push Notification Documentation
+# Push Notification Documentation
 
 The System provides the ability to send out Push Notifications to mobile devices as well as your website (device agnostic).  
 

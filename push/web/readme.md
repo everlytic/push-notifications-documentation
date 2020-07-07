@@ -70,7 +70,7 @@ There are three main methods that you can call on the SDK. They all return a pro
     ```javascript
     //... This code comes after the SDK init method
     SDK.subscribe({
-        'email' : 'example@senderguide.com',
+        'email' : 'example@example.com',
     }, true // This is an optional second parameter to disable the double opt-in modal from popping up. 
     ).then(function(result) {
         console.log(result) // Do something with the result.

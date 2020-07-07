@@ -43,7 +43,7 @@ Sending a Transactional Push Notification makes use of our API 3. If you are unf
     "project_id": 2,
     "category": "Pharmacy",
     "contact": {
-        "contact_email": "test@senderguide.com"
+        "contact_email": "test@example.com"
     },
         "message": {
         "body": "Hello {{contact.contact_name}}, your script is ready for collection at Randburg Pharmacy",
@@ -59,7 +59,7 @@ Sending a Transactional Push Notification makes use of our API 3. If you are unf
     "project_id": 2,
     "category": "Pharmacy",
     "contact": {
-        "contact_email": "test@senderguide.com"
+        "contact_email": "test@example.com"
     },
         "message": {
         "title": "Script Ready!",
