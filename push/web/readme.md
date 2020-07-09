@@ -1,3 +1,18 @@
+# Introduction
+The System provides the ability to send out Push Notifications to mobile devices as well as your website (device agnostic).  
+
+There are three main types of Push Notifications, namely:
+1. **Bulk Push Notifications** - Send out a notification to a group of people which is useful for marketing and broadcasts. [See Documentation](http://help.everlytic.com/how-to-send-a-bulk-push-notification/)
+1. **Transactional Push Notifications** - Send out an individual notification to a specific person. For example: "Your invoice is due". [See Documentation](../transactional.md)
+1. **Push Notifications in a Workflow** - Similar to Transactional Push, but it can be part of a workflow with other types of messages. [See Documentation](../FAQ/workflows/readme.md)
+ 
+## General Setup
+The basic overview of how you will set up Push Notifications is the following:
+1. [Set up a specific push notifications list in the System](../list_setup.html)
+1. [Add our SDK to your website](#getting-started)
+1. Get people to subscribe through our SDK on your website
+1. [Send out a bulk push notification to a group of people](http://help.everlytic.com/how-to-send-a-bulk-push-notification/) / [send out an individual push notification to a single person](../transactional.html)
+
 # Web Push SDK
 This is the Web version of our Push Notification SDK. It enables your website to serve Push Notifications to your user base.
 
@@ -157,3 +172,6 @@ At some point you might get an error response with certain codes. Here are some 
 
 * [Why are some of my users not receiving their Push Notifications?](./faq/delivery_problems.html)
 * [Why are my delivery rates low?](./faq/delivery_problems.html)
+* [How do I set up a Push Notification list](../list_setup.html)
+* [How do I add contacts to a Workflow that has Push Notifications?](../FAQ/workflows/readme.md)
+* [How do I send a Transactional Push Notification?](../transactional.md)
