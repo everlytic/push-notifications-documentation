@@ -1,4 +1,4 @@
-# Introduction
+# Web Push Introduction
 The System provides the ability to send out Push Notifications to mobile devices as well as your website (device agnostic).  
 
 There are three main types of Push Notifications, namely:
